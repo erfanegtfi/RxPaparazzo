@@ -16,10 +16,10 @@
 
 package com.miguelbcr.ui.rx_paparazzo2.entities;
 
+import android.app.Activity;
 import android.content.Context;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 
 public class TargetUi {
   private Object ui;
@@ -28,8 +28,8 @@ public class TargetUi {
     this.ui = ui;
   }
 
-  public FragmentActivity activity() {
-    return fragment() != null ? fragment().getActivity() : (FragmentActivity) ui;
+  public Activity activity() {
+    return fragment() != null ? fragment().getActivity() : (Activity) ui;
   }
 
   @Nullable

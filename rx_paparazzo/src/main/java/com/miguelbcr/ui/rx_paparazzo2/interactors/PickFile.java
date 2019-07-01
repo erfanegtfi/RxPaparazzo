@@ -20,8 +20,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.Nullable;
 
-import androidx.annotation.Nullable;
 import com.miguelbcr.ui.rx_paparazzo2.entities.Config;
 import com.miguelbcr.ui.rx_paparazzo2.entities.TargetUi;
 
@@ -65,6 +65,14 @@ public class PickFile extends UseCase<Uri> {
     } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       intent.setType(DEFAULT_MIME_TYPE);
       intent.putExtra(Intent.EXTRA_MIME_TYPES, config.getMultipleMimeTypes());
+    }else {
+        String[] mimeTypes = config.getMultipleMimeTypes();
+        StringBuilder types = new StringBuilder();
+        for (int i = 0; i < mimeTypes.length; i++) {
+            types.append(mimeTypes[i]);
+            types.append("|");
+        }
+        intent.setType(types.toString());
     }
 
     if (config.isUseDocumentPicker() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){

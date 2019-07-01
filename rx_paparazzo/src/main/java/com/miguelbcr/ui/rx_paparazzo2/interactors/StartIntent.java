@@ -18,9 +18,7 @@ package com.miguelbcr.ui.rx_paparazzo2.interactors;
 
 import android.app.Activity;
 import android.content.Intent;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+import android.support.v4.app.Fragment;
 import com.miguelbcr.ui.rx_paparazzo2.entities.TargetUi;
 import com.miguelbcr.ui.rx_paparazzo2.entities.UserCanceledException;
 import io.reactivex.Observable;
@@ -63,8 +61,8 @@ public final class StartIntent extends UseCase<Intent> {
     } else {
       return RxActivityResult.on(targetUi.activity())
           .startIntent(intent, onPreResult)
-          .map(new Function<Result<FragmentActivity>, Intent>() {
-            @Override public Intent apply(Result<FragmentActivity> result) throws Exception {
+          .map(new Function<Result<Activity>, Intent>() {
+            @Override public Intent apply(Result<Activity> result) throws Exception {
               return StartIntent.this.getResponse(result);
             }
           });
