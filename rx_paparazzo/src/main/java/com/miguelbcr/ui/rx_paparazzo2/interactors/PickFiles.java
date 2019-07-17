@@ -95,6 +95,14 @@ public class PickFiles extends UseCase<List<Uri>> {
     } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       intent.setType(DEFAULT_MIME_TYPE);
       intent.putExtra(Intent.EXTRA_MIME_TYPES, config.getMultipleMimeTypes());
+    }else {
+        String[] mimeTypes = config.getMultipleMimeTypes();
+        StringBuilder types = new StringBuilder();
+        for (int i = 0; i < mimeTypes.length; i++) {
+            types.append(mimeTypes[i]);
+            types.append("|");
+        }
+        intent.setType(types.toString());
     }
 
     if (config.isUseDocumentPicker() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
