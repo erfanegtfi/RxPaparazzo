@@ -43,6 +43,7 @@ public class PickFile extends UseCase<Uri> {
     this.startIntent = startIntent;
   }
 
+
   public String getDefaultMimeType() {
     return DEFAULT_MIME_TYPE;
   }
